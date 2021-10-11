@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Candidate Evaluation Project</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="column-1">
+                <p>Enter number of rows you want to add:</p>
+                <p class="alert" style="color: red;"></p>
+                <input type="text" name="NumberCandidates">
+                <button class="AddCandidate">Add</button>
+            </div>
+            <div class="column-2">
+                <h2>All Candidates</h2>
+                <table class="tableAllCandidates">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Gender</th>
+                        <th>Summary Score</th>
+                        <th>Skills Score</th>
+                        <th>Work Experience Score</th>
+                        <th>Education Score</th>
+                        <th>Total Score</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value="ahmad"></td>
+                        <td><input type="email" value="email@email.com"></td>
+                        <td><input type="phone" value="+1 (555) 160 8796"></td>
+                        <td>
+                            <div>
+                                <input type="radio" id="male" name="gender" value="M" checked>
+                                <label for="male">M</label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="female" name="gender" value="F">
+                                <label for="female">F</label>
+                            </div>
+                        </td>
+                        <td><select name="AllScore1" id="AllScore1">
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select></td>
+                        <td><select name="AllScore2" id="AllScore1">
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select></td>
+                        <td><select name="AllScore3" id="AllScore1">
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select></td>
+                        <td><select name="AllScore4" id="AllScore1">
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select></td>
+                        <td>
+                            <p class="total-score"></p>
+                        </td>
+                    </tr>
+
+                </table>
+                <button class="Evaluate">Evaluate to First Stage</button>
+                <h2>First Stage Candidates</h2>
+                <table class="FirstStageCandidates">
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>First Stage Score</th>
+                        <th>Interview Grade</th>
+                        <th>Total</th>
+                    </tr>
+
+                </table>
+                <button class="cal-total-first-stage">Calculate total grade for first stagers</button>
+                <button class="evaluate-to-last">Evaluate to Last Stage</button>
+                <h2>Last Stage Candidates</h2>
+                <table class="LastStageCandidates">
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Final Grade</th>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/javascript/jquery-3.5.1.min.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
