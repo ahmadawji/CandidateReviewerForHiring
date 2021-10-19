@@ -166,32 +166,23 @@ $(document).ready(function () {
 
         let topMaleCandidates = maleCandidates.sort(function (a, b) {
             {
-                return a.primaryScore - b.primaryScore
+                return b.primaryScore - a.primaryScore
             }
         });
 
         let topFemaleCandidates = femaleCandidates.sort(function (a, b) {
             {
-                return a.primaryScore - b.primaryScore
+                return b.primaryScore - a.primaryScore
             }
         });
+        console.log(topFemaleCandidates);
 
-        if (groupOfCandidates.length > 0 && groupOfCandidates.length <= 30) { //1. I assume that you need only 30 candidates for the first stage 2.When the total number of candidates are equal to 30 or less We have to choose between males and females equally. However if the males or the females are less than they need to be as equally distributed, I have to make up the shortage with the rest of the candidates. 3. To make up the shortage I did a simple mathematic equation where MakeUp= TotalGroupOfCandidates-NumOfGenderWhoGotShortage.
+        if (groupOfCandidates.length > 30) { //If the total number of candidate are greater than 30
             if (topMaleCandidates.length < Math.ceil(groupOfCandidates.length / 2)) {
-                topFemaleCandidates = topFemaleCandidates.slice(0, groupOfCandidates.length - topMaleCandidates.length + 1);
+                topFemaleCandidates = topFemaleCandidates.slice(0, 30 - topMaleCandidates.length + 1);
 
             } else if (topFemaleCandidates.length < Math.ceil(groupOfCandidates.length / 2)) {
-                topMaleCandidates = topMaleCandidates.slice(0, groupOfCandidates.length - topFemaleCandidates.length + 1);
-            } else { //Then the two genders can be equally distributed
-                topMaleCandidates = topMaleCandidates.slice(0, groupOfCandidates.length / 2 + 1);
-                topFemaleCandidates = topFemaleCandidates.slice(0, groupOfCandidates.length / 2 + 1);
-            }
-        } else { //If the total number of candidate are greater than 30
-            if (topMaleCandidates.length < Math.ceil(groupOfCandidates.length / 2)) {
-                topFemaleCandidates = topFemaleCandidates.slice(0, groupOfCandidates.length - topMaleCandidates.length + 1);
-
-            } else if (topFemaleCandidates.length < Math.ceil(groupOfCandidates.length / 2)) {
-                topMaleCandidates = topMaleCandidates.slice(0, groupOfCandidates.length - topFemaleCandidates.length + 1);
+                topMaleCandidates = topMaleCandidates.slice(0, 30 - topFemaleCandidates.length + 1);
             } else { //Then the two genders can be equally distributed
                 topMaleCandidates = topMaleCandidates.slice(0, 30 / 2 + 1);
                 topFemaleCandidates = topFemaleCandidates.slice(0, 30 / 2 + 1);
@@ -229,7 +220,7 @@ $(document).ready(function () {
 
 
 
-        // console.log(getFirstStageCandidates());
+
         // calTotal(groupOfFirstStageCandidates);
 
 
@@ -302,7 +293,7 @@ $(document).ready(function () {
 
     function calTotal() {
         let candidate = getFirstStageCandidates();
-        // console.log(candidate);
+
         let rowFirstStageCandidates = $('table.FirstStageCandidates tr:gt(0) ');
         let firstStageScore;
         let InterviewGrade;
@@ -311,7 +302,7 @@ $(document).ready(function () {
 
             firstStageScore = $(this).find(".first-stage-score").val();
             InterviewGrade = $(this).find('option:selected').val();
-            // console.log(firstStageScore);
+
 
             // candidate.InterviewGrade = InterviewGrade;
             $(this).find('.total-score').text(`${(parseInt(InterviewGrade) + parseInt(firstStageScore)) / 2}`);
@@ -335,32 +326,25 @@ $(document).ready(function () {
 
         let topMaleCandidates = maleCandidates.sort(function (a, b) {
             {
-                return a.finalGrade - b.finalGrade
+                return b.finalGrade - a.finalGrade
             }
         });
 
         let topFemaleCandidates = femaleCandidates.sort(function (a, b) {
             {
-                return a.finalGrade - b.finalGrade
+                return b.finalGrade - a.finalGrade
             }
         });
+        groupOfLastStageCandidates = [];
+        groupOfLastStageCandidates = [...topMaleCandidates, ...topFemaleCandidates];
 
-        if (groupOfLastStageCandidates.length > 0 && groupOfLastStageCandidates.length <= 15) { //1. I assume that you need only 30 candidates for the first stage 2.When the total number of candidates are equal to 30 or less We have to choose between males and females equally. However if the males or the females are less than they need to be as equally distributed, I have to make up the shortage with the rest of the candidates. 3. To make up the shortage I did a simple mathematic equation where MakeUp= TotalGroupOfCandidates-NumOfGenderWhoGotShortage.
-            if (topMaleCandidates.length < Math.ceil(groupOfLastStageCandidates.length / 2)) {
-                topFemaleCandidates = topFemaleCandidates.slice(0, groupOfLastStageCandidates.length - topMaleCandidates.length + 1);
 
-            } else if (topFemaleCandidates.length < Math.ceil(groupOfLastStageCandidates.length / 2)) {
-                topMaleCandidates = topMaleCandidates.slice(0, groupOfLastStageCandidates.length - topFemaleCandidates.length + 1);
-            } else { //Then the two genders can be equally distributed
-                topMaleCandidates = topMaleCandidates.slice(0, groupOfLastStageCandidates.length / 2 + 1);
-                topFemaleCandidates = topFemaleCandidates.slice(0, groupOfLastStageCandidates.length / 2 + 1);
-            }
-        } else { //If the total number of candidate are greater than 30
-            if (topMaleCandidates.length < Math.ceil(groupOfCandidates.length / 2)) {
-                topFemaleCandidates = topFemaleCandidates.slice(0, groupOfCandidates.length - topMaleCandidates.length + 1);
+        if (groupOfLastStageCandidates.length > 10) { //If the total number of candidate are greater than 30
+            if (topMaleCandidates.length < 10 / 2) {
+                topFemaleCandidates = topFemaleCandidates.slice(0, 10 - topMaleCandidates.length + 1);
 
-            } else if (topFemaleCandidates.length < Math.ceil(groupOfCandidates.length / 2)) {
-                topMaleCandidates = topMaleCandidates.slice(0, groupOfCandidates.length - topFemaleCandidates.length + 1);
+            } else if (topFemaleCandidates.length < 10 / 2) { //10 which is the needed number of candidates
+                topMaleCandidates = topMaleCandidates.slice(0, 10 - topFemaleCandidates.length + 1);
             } else { //Then the two genders can be equally distributed
                 topMaleCandidates = topMaleCandidates.slice(0, 10 / 2 + 1);
                 topFemaleCandidates = topFemaleCandidates.slice(0, 10 / 2 + 1);
@@ -368,6 +352,10 @@ $(document).ready(function () {
         }
 
         let topFinalStageCandidates = [...topMaleCandidates, ...topFemaleCandidates];
+        topFinalStageCandidates = topFinalStageCandidates.sort(function (a, b) {
+            return b.finalGrade - a.finalGrade;
+        });
+
         $('.LastStageCandidates  tr:gt(0)').remove();
         for (let i = 0; i < topFinalStageCandidates.length; i++) {
             thirdTable.append(` <tr>
