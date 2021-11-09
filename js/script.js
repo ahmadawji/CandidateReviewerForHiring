@@ -16,6 +16,7 @@ $(document).ready(function () {
 
     function addCandidate() {
         // $('.AddCandidate').on('click', function () {
+
         let numberOfCandidates = 0;
         numberOfCandidates = $("input[name='NumberCandidates']").val();
         let parsed = parseInt(numberOfCandidates);
@@ -29,6 +30,7 @@ $(document).ready(function () {
             let firstTable = $('.tableAllCandidates');
             for (let index = 0; index < parsed; index++) {
                 firstTable.append(` <tr>
+                    <td><p>${index+1}</p></td>
                     <td><input type="text" value="ahmad"></td>
                     <td><input type="email" value="email@email.com"></td>
                     <td><input type="phone" value="+1 (555) 160 8796"></td>
@@ -94,12 +96,117 @@ $(document).ready(function () {
                     <td>
                         <p class="total-score"></p>
                     </td>
+                    <td><button class="delete-candidate">Delete</button></td>
+                    <td><button id="add-candidate">Add</button><button style="display:none;" id="update-candidate">Update</button></td>
                 </tr>`);
             }
         }
 
         // });
     }
+
+    function getCandidates() {
+        let firstTable = $('.tableAllCandidates');
+        const url = 'https://script.google.com/macros/s/AKfycbwpd2_j_d-Ni_SXQodGp3K1gl4uM8X_2oGbeS62a8rTKQ8T3XzZQAkSshrPgUq5ysZhcg/exec';
+        fetch(url).then(rep => rep.json())
+            .then((data) => {
+                // console.log(data.data);
+                let counter = 1; //I will use this counter so I can set the value for each select element in line 200
+                data.data.forEach((el, ind) => {
+                    // console.log(el);
+                    if (ind > 0) {
+                        if (el[1] == "") return null;
+                        firstTable.append(` <tr>
+                        <td><p>${el[0]-1}</p></td>
+                        <td><input type="text" value="${el[1]}"></td>
+                        <td><input type="email" value="${el[2]}"></td>
+                        <td><input type="phone" value="${el[3]}"></td>
+                        <td>
+                            <div>
+                                <input type="radio" id="male" name="gender${el[0]}" value="M" >
+                                <label for="male">M</label>
+                            
+                            <br>
+                            
+                                <input type="radio" id="female" name="gender${el[0]}" value="F">
+                                <label for="female">F</label>
+                            </div>
+                        </td>
+                        <td><select  name="AllScore${counter++}" id="AllScore1">
+                        
+                                <option value="1" >1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select></td>
+                        <td><select  name="AllScore${counter++}" id="AllScore1">
+                                <option value="1" >1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select></td>
+                        <td><select  name="AllScore${counter++}" id="AllScore1">
+                                <option value="1" >1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select></td>
+                        <td><select  name="AllScore${counter++}" id="AllScore1">
+                                <option value="1" >1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select></td>
+                        <td>
+                            <p class="total-score"></p>
+                        </td>
+                        <td><button class="delete-candidate">Delete</button></td>
+                        <td><button id="update-candidate">Update</button></td>
+                    </tr>`);
+
+                    }
+                });
+                counter = 1;
+                data.data.forEach((el, ind) => {
+                    if (ind > 0) {
+                        // console.log('Hello', el[0], 'and gender: ', el[4]);
+                        el[4] === "M" ? $(`input:radio[name="gender${el[0]}"]:nth-child(1)`).attr('checked', 'checked') : $(`input:radio[name="gender${el[0]}"]:nth-child(4)`).attr('checked', 'checked');
+
+                        $(`select[name="AllScore${counter++}"]`).val(`${el[5]}`);
+                        $(`select[name="AllScore${counter++}"]`).val(`${el[6]}`);
+                        $(`select[name="AllScore${counter++}"]`).val(`${el[7]}`);
+                        // console.log('counter', counter);
+                        // console.log('el8', el[8]);
+                        $(`select[name="AllScore${counter++}"]`).val(`${el[8]}`);
+                    }
+                });
+            })
+    }
+    getCandidates();
 
 
 
@@ -124,7 +231,7 @@ $(document).ready(function () {
 
             };
             inputTableAllCandidates = $(this).find("input");
-
+            console.log(inputTableAllCandidates);
 
             inputGenderChecked = $(this).find("input[name*='gender']:checked").val();
 
@@ -175,7 +282,7 @@ $(document).ready(function () {
                 return b.primaryScore - a.primaryScore
             }
         });
-        console.log(topFemaleCandidates);
+        // console.log(topFemaleCandidates);
 
         if (groupOfCandidates.length > 30) { //If the total number of candidate are greater than 30
             if (topMaleCandidates.length < Math.ceil(groupOfCandidates.length / 2)) {
@@ -192,13 +299,11 @@ $(document).ready(function () {
         let topCandidates = [...topMaleCandidates, ...topFemaleCandidates]
 
 
-
-
         $('.FirstStageCandidates  tr:gt(0)').remove();
         for (let i = 0; i < topCandidates.length; i++) {
             secondTable.append(` <tr>
-                <td><input type="text" value="ahmad"></td>
-                <td><input type="email" value="email@email.com"></td>
+                <td><input type="text" value="${topCandidates[i].name}"></td>
+                <td><input type="email" value="${topCandidates[i].email}"></td>
                 <td><input type="text" class="first-stage-score" value="${topCandidates[i].primaryScore}"></td>
                 <td><select name="interviewGrade" id="interviewGrade">
                         <option value="1" selected>1</option>
@@ -366,5 +471,8 @@ $(document).ready(function () {
         }
 
     }
+
+
+
 
 });

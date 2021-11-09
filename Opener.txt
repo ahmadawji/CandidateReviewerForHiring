@@ -1,0 +1,7 @@
+https://docs.google.com/spreadsheets/d/1EDU9TFTKJPPF-X9GKD4bG4pmQjHCKspVn3Wk6OHYhic/edit#gid=0
+https://script.google.com/home/projects/15bdSM8TNHk7SkP41KZcTiAdkphM95XCZLIHvf_l44rcyzmuV1DrKfA8P/edit
+https://github.com/jenizar/CRUD-operations-on-google-sheets/blob/main/JavaScript.html
+https://github.com/jenizar/CRUD-operations-on-google-sheets/blob/main/Code.gs
+https://github.com/jenizar/CRUD-operations-on-google-sheets/blob/main/Form.html
+https://developers.google.com/apps-script/guides/html/communication#index.html
+

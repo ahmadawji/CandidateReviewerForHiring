@@ -1,12 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
+
 body {
     background-color: #0a0a23;
 
 }
 
-@font-face {
-    font-family: 'Roboto';
-    src: url("../assets/Roboto_Mono/static/RobotoMono-Regular.ttf");
-}
 
 .container {
     margin: 20px 40px;
@@ -15,13 +13,13 @@ body {
 
 .container .row .column-1 p {
     font-size: .9rem;
-    font-family: 'Roboto';
+    font-family: 'Roboto Mono', monospace;
 }
 
 .container .row .column-2 {
     text-align: center;
     flex-grow: 7;
-    font-family: 'Roboto';
+    font-family: 'Roboto Mono', monospace;
 
 }
 
@@ -97,7 +95,6 @@ button {
     font-weight: bold;
     font-size: .9rem;
     text-align: center;
-    width: 30%;
     margin-top: 10px;
     transition: all ease .2s;
     cursor: pointer;
