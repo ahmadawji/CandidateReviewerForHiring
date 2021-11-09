@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Candidate Evaluation Project</title>
+    <base target="_top">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <?!= include('Style'); ?>
+  </head>
+  <body>
+        <div class="container">
+        <div class="row">
+            <div class="column-1">
+                <p>Enter number of rows you want to add:</p>
+
+
+                <input type="number" min="1" name="NumberCandidates">
+                <p class="alert" style="color: red;"></p>
+                <button class="AddCandidate">Add</button>
+                <!-- <button class="trigger">trigger</button> -->
+            </div>
+            <div class="column-2">
+                <h2>All Candidates</h2>
+  
+                <table class="tableAllCandidates">
+                    <tbody>
+                        <tr>
+                            <th>RID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Gender</th>
+                            <th>Summary Score</th>
+                            <th>Skills Score</th>
+                            <th>Work Experience Score</th>
+                            <th>Education Score</th>
+                            <th>Total Score</th>
+                            <th>Delete</th>
+                            <th>Update</th>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="alert" style="color: red;"></p>
+
+                <button class="Evaluate">Evaluate to First Stage</button>
+                <h2>First Stage Candidates</h2>
+                <table class="FirstStageCandidates">
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>First Stage Score</th>
+                        <th>Interview Grade</th>
+                        <th>Total</th>
+                    </tr>
+
+                </table>
+                <button class="cal-total-first-stage">Calculate total grade for first stagers</button>
+                <button class="evaluate-to-last">Evaluate to Last Stage</button>
+                <h2>Last Stage Candidates</h2>
+                <table class="LastStageCandidates">
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Final Grade</th>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <?!= include('JQuery'); ?>
+    <?!= include('tester'); ?>
+    <?!= include('Javascript'); ?>
+
+  </body>
+</html>
