@@ -1,6 +1,0 @@
-1.Table that contains all candidates
-2.Each row contains one candidate, and each row has set of columns that contain inputs to give a score from 1-10
-3.In the JS will create an array of objects and each object will has its name, gender and total grade scored
-4.Will create an array for the 1st stage and it will contain 30 candidates. Candidates should be a mix of male and females but must be 30 in total
-5.The 1st stage table will include the grade of the interview 
-6.For the last stage you have to select the top 10 developers based on their total score, and they should be equally divided between male and femals.
